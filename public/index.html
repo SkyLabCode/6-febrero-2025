@@ -71,6 +71,20 @@
             const response = await fetch('/api/tasks');
             const tasks = await response.json();
             console.log(tasks);
+            //Renderizamos las tareas para mostrarlas en el html
+            for(var task of tasks){
+                const cardTask = document.createElement('div');
+                cardTask.className = 'card mb-3';
+                const cardBodyTask = document.createElement('div');
+                cardBodyTask.className = 'card-body';
+
+                const description = document.createElement('p');
+                description.textContent = task.description;
+
+                cardBodyTask.append(description);
+                cardTask.append(cardBodyTask);
+                document.getElementById('tasks-container').append(cardTask);
+            }
 
         }
 
